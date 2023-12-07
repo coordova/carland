@@ -56,7 +56,7 @@ export default function Header() {
 		};
 	});
 
-	console.log(header);
+	// console.log(header);
 
 	return (
 		<header
@@ -113,7 +113,7 @@ export default function Header() {
 					</Link>
 					<Link
 						className="cursor-pointer"
-						to="home"
+						to="cars"
 						activeClass="active"
 						smooth={desktopMode}
 						spy={true}
@@ -140,7 +140,7 @@ export default function Header() {
 					</Link>
 					<Link
 						className="cursor-pointer"
-						to="testimonials"
+						to="testimonial"
 						activeClass="active"
 						smooth={desktopMode}
 						spy={true}

@@ -9,7 +9,7 @@ export const SearchContext = createContext();
 export const SearchContextProvider = ({ children }) => {
 	const [searchActive, setSearchActive] = useState(false);
 	return (
-		<SearchContext.Provider value={"search context"}>
+		<SearchContext.Provider value={{ searchActive, setSearchActive }}>
 			{children}
 		</SearchContext.Provider>
 	);
