@@ -165,6 +165,7 @@ export default function Header() {
 					>
 						See all cars
 					</Link>
+					<SearchMobile />
 				</nav>
 			</div>
 		</header>
