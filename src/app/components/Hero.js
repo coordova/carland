@@ -11,6 +11,12 @@ import { SearchContext } from "@/context/search";
 // next image
 import Image from "next/image";
 
+// motion
+import { motion, easeInOut } from "framer-motion";
+
+// variants
+import { fadeIn } from "/variants";
+
 export default function Hero() {
 	const { searchActive } = useContext(SearchContext);
 	return (
@@ -20,17 +26,35 @@ export default function Hero() {
 				<div className="flex flex-col xl:flex-row justify-center items-center xl:justify-start h-full">
 					{/* text */}
 					<div className="text-center xl:max-w-xl xl:text-left mt-16 xl:mt-0">
-						<h1 className="h1">
+						<motion.h1
+							variants={fadeIn("down", 0.2)}
+							initial="hidden"
+							whileInView={"show"}
+							viewport={{ once: false, amount: 0.6 }}
+							className="h1"
+						>
 							Explore the Finest{" "}
 							<span className="text-accent">Global</span> Offers
-						</h1>
-						<p className="description max-w-[550px] mx-auto xl:mx-0 mb-6 xl:mb-10">
+						</motion.h1>
+						<motion.p
+							variants={fadeIn("down", 0.4)}
+							initial="hidden"
+							whileInView={"show"}
+							viewport={{ once: false, amount: 0.6 }}
+							className="description max-w-[550px] mx-auto xl:mx-0 mb-6 xl:mb-10"
+						>
 							Find your ideal ride for any adventure with our
 							diverse range of affordable and dependable car
 							rentals.
-						</p>
+						</motion.p>
 						{/* btns */}
-						<div className="flex gap-x-3 justify-center xl:justify-start">
+						<motion.div
+							variants={fadeIn("down", 0.6)}
+							initial="hidden"
+							whileInView={"show"}
+							viewport={{ once: false, amount: 0.8 }}
+							className="flex gap-x-3 justify-center xl:justify-start"
+						>
 							<button className="btn-cta">
 								<Image
 									src={"/icons/buttons/app-store.svg"}
@@ -47,29 +71,52 @@ export default function Hero() {
 									alt=""
 								/>
 							</button>
-						</div>
+						</motion.div>
 					</div>
 					{/* img car */}
-					<div className="relative w-full max-h-[50vh] md:max-w-[70vw] xl:max-w-[860px] xl:max-h-[542px] xl:absolute xl:-right-[100px] min-[1680px]:right-[120px] xl:top-48">
+					<motion.div
+						variants={fadeIn("up", 0.6)}
+						initial="hidden"
+						whileInView={"show"}
+						viewport={{ once: false, amount: 0.6 }}
+						className="relative w-full max-h-[50vh] md:max-w-[70vw] xl:max-w-[860px] xl:max-h-[542px] xl:absolute xl:-right-[100px] min-[1680px]:right-[120px] xl:top-48"
+					>
 						<Image
 							src={"/images/hero/car.svg"}
-							fill
+							// placeholder="blur"
+							// quality={100}
+							// fill
+							width={640}
+							height={640}
+							// sizes="100vw"
 							alt=""
 							style={{
 								objectFit: "contain",
 							}}
 							priority
 						/>
-					</div>
+					</motion.div>
 				</div>
 			</div>
 			{searchActive ? (
-				<div className="fixed top-[80px] z-10 w-full max-w-[1920px]">
+				<motion.div
+					initial={{ y: "-100%" }}
+					animate={{ y: 0 }}
+					transition={{ ease: easeInOut }}
+					className="fixed top-[80px] z-10 w-full max-w-[1920px]"
+				>
 					<Search />
-				</div>
+				</motion.div>
 			) : (
 				<div className="-mt-12 w-full max-w-[1300px] mx-auto">
-					<Search />
+					<motion.div
+						variants={fadeIn("up", 0.8)}
+						initial="hidden"
+						whileInView={"show"}
+						viewport={{ once: false, amount: 0.2 }}
+					>
+						<Search />
+					</motion.div>
 				</div>
 			)}
 		</section>
